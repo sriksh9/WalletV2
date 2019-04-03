@@ -47,7 +47,7 @@ public class Client {
 				long accountNumber = sc.nextLong();
 				System.out.print("\nAmount : ");
 				double amount = sc.nextDouble();
-				ser.deposit(accountNumber, amount);
+				System.out.println("Your updated balance is : "+ser.deposit(accountNumber, amount));
 				break;
 			}
 			case 4: {
@@ -56,7 +56,7 @@ public class Client {
 				long accountNumber = sc.nextLong();
 				System.out.print("\nAmount : ");
 				double amount = sc.nextDouble();
-				ser.withdraw(accountNumber, amount);
+				System.out.println("Your updated balance is : "+ser.withdraw(accountNumber, amount));
 				break;
 
 			}
@@ -68,7 +68,7 @@ public class Client {
 				long accountNumber2 = sc.nextLong();
 				System.out.print("\nAmount : ");
 				double amount = sc.nextDouble();
-				ser.transfer(accountNumber1, accountNumber2, amount);
+				System.out.println("Your updated balance is : "+ser.transfer(accountNumber1, accountNumber2, amount));
 				break;
 			}
 			case 6: {
