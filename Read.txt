@@ -1,0 +1,16 @@
+Prior to the execution of the project, create the following tables in the Database
+
+create table bank_accounts(
+	account_number Numeric Primary key,
+	account_name VARCHAR(25),
+	account_balance Numeric(14,2)
+);
+
+create table bank_transactions(
+	transaction_id Numeric,
+	account_number Numeric,
+	transaction_type VARCHAR(20),
+	amount Numeric(14,2),
+	balance Numeric(14,2),
+	date_time VARCHAR(20)
+);

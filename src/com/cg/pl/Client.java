@@ -16,10 +16,10 @@ public class Client {
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 		int choice = 0;
-		sc = new Scanner(System.in);
+		//creating the object of service layer
 		IWalletService ser = new WalletService();
 		ser.connect();
-		int op = 0;
+		int op = 0; //Variable to check if the program to should iterate
 		do {
 			System.out.print("\n1->Register new account\n2->Account Details\n3->Deposit\n4->Withdraw\n5->Transfer\n6->MiniStatement");
 			System.out.print("\nEnter your choice :");
@@ -77,12 +77,13 @@ public class Client {
 				System.out.print("\nEnter the account no. :");
 				long accountNumber = sc.nextLong();
 				System.out.println();
-				ResultSet rs = ser.getTransactions(accountNumber);
+				ResultSet rs = ser.getTransactions(accountNumber);//Obtain the entire result set from the database.
 				ResultSetMetaData rsmd = rs.getMetaData();
-				int columnsNumber = rsmd.getColumnCount();
+				int columnsNumber = rsmd.getColumnCount();//Obtaining the column count, for the proper formatted display of the entire table
 				while(rs.next()) {
 					
 					//Printing with the Transaction "toString() Method. However, this mode of printing is not recommended."
+					
 					/*tc.setTransactionID(rs.getLong(1));
 					tc.setAccountNo(rs.getLong(2));
 					tc.setTransactionType(rs.getString(3));
@@ -91,10 +92,9 @@ public class Client {
 					tc.setDateTime(rs.getString(6));
 					System.out.println(tc);*/
 					
+					//iterating the entire row for obtaining the column
 					for(int i = 1 ; i <= columnsNumber; i++){
-
 					      System.out.print(rs.getString(i) + "	"); //Print one element of a row
-
 					}
 					System.out.println();
 				}
@@ -102,10 +102,11 @@ public class Client {
 			}
 
 			}
-			System.out.print("\nDo you wish to continue? 0->No, 1->yes");
+			System.out.print("\nDo you wish to continue? 0->No, any other number->yes");
 			op = sc.nextInt();
 
 		} while (op != 0);
+		System.out.println("------------------------Thank you for banking with us------------------------");
 
 	}
 
