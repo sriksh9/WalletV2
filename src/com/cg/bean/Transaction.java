@@ -1,4 +1,4 @@
-package com.cg.bean;
+	package com.cg.bean;
 
 public class Transaction {
 	private long transactionID;

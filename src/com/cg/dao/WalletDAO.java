@@ -10,6 +10,7 @@ import java.time.format.DateTimeFormatter;
 
 import com.cg.bean.Account;
 import com.cg.bean.Transaction;
+import com.cg.exception.AccountException;
 
 public class WalletDAO implements IWalletDAO {
 	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
@@ -26,10 +27,16 @@ public class WalletDAO implements IWalletDAO {
 		acc.setAccNo(accNo);
 		Statement st = con.createStatement();
 		ResultSet rs = st.executeQuery(query);
-		rs.next();
-		acc.setaName(rs.getString(2));
-		acc.setaBalance(rs.getDouble(3));
-		return acc;
+		if(rs.next() != false) {
+			acc.setaName(rs.getString(2));
+			acc.setaBalance(rs.getDouble(3));
+			return acc;
+		}
+		else
+			throw new AccountException("AccountDoesn't Exist");
+		
+		
+		
 	}
 
 	public ResultSet getTransactions(long accNo) throws Exception {
